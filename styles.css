@@ -34,3 +34,20 @@ button {
 button:hover {
     opacity: 0.75;
 }
+
+#container {
+    background-color: darkgrey;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: space-evenly;
+    width: 70vh;
+    height: 70vh;
+}
+
+#container div {
+    background-color: white;
+    border: 1px solid black;
+    opacity: 0.5;
+}
