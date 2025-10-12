@@ -1,0 +1,36 @@
+*, *::after, *::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Roboto, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(230,230,230);
+}
+
+h1 {
+    margin: 20px 15px 15px 25px;
+    text-align: center;
+}
+
+button {
+    background-color: lightseagreen;
+    color: black;
+    padding: 10px 15px 10px 15px;
+    margin: 25px 20px 25px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    flex-grow: 0;
+    max-width: 200px;
+    cursor: pointer;
+
+}
+
+button:hover {
+    opacity: 0.75;
+}
