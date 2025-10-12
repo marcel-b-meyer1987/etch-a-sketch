@@ -37,9 +37,26 @@ function createGrid() {
     const squareWidth = Math.floor((containerWidth - (count - 1)) / count);
     const squareHeight = squareWidth;
     console.log(`Square dimensions: ${squareWidth} x ${squareHeight}px`);
-/* 
-    container.styles.width = containerWidth;
-    container.styles.height = containerHeight; */
+
+    const squares = [[]];
+
+    //for each row...
+    for (let i = 0; i < count; i++) {
+
+        //...and for each column
+        for (let j = 0; j < count; j++) {
+
+            //add a div 
+            squares[i][j] = document.createElement("div");
+            /* squares[i][j].styles.width = squareWidth;
+            squares[i][j].styles.ieight = squareHeight; */
+            squares[i][j].id = `square[${i}][${j}]`;
+
+            container.appendChild(squares[i][j]);
+
+        }
+
+    }
 
 
 
