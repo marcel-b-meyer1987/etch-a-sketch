@@ -51,14 +51,19 @@ function createSquares() {
     for (let i = 0; i < (squaresCount * squaresCount); i++) {
 
         const newSquare = document.createElement("div");
+        newSquare.addEventListener("mouseover", blackenSquare);
 
         squares.push(newSquare);
         container.appendChild(newSquare);
 
     }
     
-console.log(squares);
+    console.log(squares);
+
+    
 
 }
 
-
+    function blackenSquare(event) {
+        event.target.style.backgroundColor = "black";
+    }
