@@ -53,22 +53,43 @@ function createSquares() {
 
     } */
 
+        const mode = document.querySelector("#mode");
+        console.log(mode.value);
+    
     for (let i = 0; i < (squaresCount * squaresCount); i++) {
 
         const newSquare = document.createElement("div");
-        newSquare.addEventListener("mouseover", blackenSquare);
+
+        switch(mode.value) {
+
+            case "Darken": 
+                newSquare.style.opacity = "0.1";
+                newSquare.addEventListener("mouseover", darkenSquare);
+                break;
+
+            case "Blacken": 
+                newSquare.addEventListener("mouseover", blackenSquare);
+                break;
+
+        }
 
         squares.push(newSquare);
         container.appendChild(newSquare);
 
     }
     
-    console.log(squares);
-
-    
+    console.log(squares);    
 
 }
 
     function blackenSquare(event) {
+        event.target.style.opacity="1";
         event.target.style.backgroundColor = "black";
+    }
+
+    function darkenSquare(event) {
+        let currentOpacity = parseFloat(event.target.style.opacity);
+        let newOpacity = currentOpacity + 0.1;
+        // console.log(`Opacity: ${currentOpacity} -> ${newOpacity}`);
+        event.target.style.opacity = newOpacity.toString(); 
     }

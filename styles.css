@@ -46,11 +46,11 @@ button:hover {
 }
 
 #container div {
-    background-color: white;
-    border: 1px solid black;
+    background-color: black;
+    border: none;
     width: 60px;
     height: 60px;
-    /* opacity: 0.5; */
+    opacity: 0.1;
     flex-grow: 0;
     flex-shrink: 0;
 }
