@@ -26,6 +26,11 @@ function createSquares() {
 
     // squaresCount = prompt("Please enter the wanted number of squares per row.", "24");
     const container = document.querySelector("#container");    
+
+    if (container.hasChildNodes) {
+        container.innerHTML = "";
+        squares.splice(0, squares.length);
+    }
     
 
 /*     // First calculate the dimensions of the squares, based on actual container size + wanted number of squares
