@@ -1,65 +1,64 @@
 "use strict";
 
-document.addEventListener("DOMContentLoaded", init);
+let squaresCount = 16;
+let containerWidth = 960;
+let squareWidth = 60;
+const squares = [];
 
-function init() {
+document.addEventListener("DOMContentLoaded", () => {
 
-    var container = document.querySelector("#container");
+    const resetBtn = document.querySelector("#reset-Btn");
+    
+
+    console.log(resetBtn);
     console.log(container);
 
-    const startBtn = document.querySelector("#reset-Btn");
-    console.log(startBtn);
 
-    startBtn.addEventListener("click", createGrid, {capture: true });
-}
 
-function createGrid() {
+    resetBtn.addEventListener("click", createSquares)
 
-    event.preventDefault();
 
-    const defaultCount = 16;
-    let count = defaultCount;
 
-    console.log("createGrid()...");
-    console.log(`defaultCount: ${defaultCount}`);
 
-    let countStr = prompt("Please enter a number of squares per row:", "16");
-    if ((countStr != null) && (countStr != "") && (! isNaN(parseInt(countStr)))) {
-        count = parseInt(countStr) ?? defaultCount;
+});
+
+function createSquares() {
+
+    // squaresCount = prompt("Please enter the wanted number of squares per row.", "24");
+    const container = document.querySelector("#container");    
+    
+
+/*     // First calculate the dimensions of the squares, based on actual container size + wanted number of squares
+    let cWidth = container.offsetWidth;
+    let borderSpace = squaresCount - 1;
+    let squareWidth = Math.floor((cWidth - borderSpace) / squaresCount);
+    console.log("Calculating dimensions of squares...");
+    console.log(`Container Width: ${cWidth}px`);
+    console.log(`Space needed for ${(squaresCount - 1)} borders: ${borderSpace}px`);
+    console.log(`Available width/height per square: ${squareWidth}px`);
+
+    for (let i = 0; i < squaresCount * squaresCount; i++) {
+
+        const newSquare = document.createElement("div");
+        newSquare.setAttribute("width", `${squareWidth}px`);
+        newSquare.setAttribute("height", `${squareWidth}px`);
+        // newSquare.setAttribute("flex-grow","0");
+        container.appendChild(newSquare);
+        squares.push(newSquare);
+
+    } */
+
+    for (let i = 0; i < (squaresCount * squaresCount); i++) {
+
+        const newSquare = document.createElement("div");
+
+        squares.push(newSquare);
+        container.appendChild(newSquare);
+
     }
     
-    console.log(`countStr: ${countStr} => count: ${count}`);
+console.log(squares);
 
-    const containerWidth = Math.floor(visualViewport.height * 70 / 100);
-    const containerHeight = containerWidth;
-    console.log(`Grid dimensions: ${containerWidth} x ${containerHeight}px`);
-
-    const squareWidth = Math.floor((containerWidth - (count - 1)) / count);
-    const squareHeight = squareWidth;
-    console.log(`Square dimensions: ${squareWidth} x ${squareHeight}px`);
-
-    const squares = [[]];
-
-    //for each row...
-    for (let i = 0; i < count; i++) {
-
-        //...and for each column
-        for (let j = 0; j < count; j++) {
-
-            //add a div 
-            squares[i][j] = document.createElement("div");
-            /* squares[i][j].styles.width = squareWidth;
-            squares[i][j].styles.ieight = squareHeight; */
-            squares[i][j].id = `square[${i}][${j}]`;
-
-            container.appendChild(squares[i][j]);
-
-        }
-
-    }
-
-
-
-    
 }
+
 
