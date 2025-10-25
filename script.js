@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log(resetBtn);
     console.log(container);
 
-    resetBtn.addEventListener("click", createSquares)
+    resetBtn.addEventListener("click", createSquares);
 
 });
 
@@ -50,6 +50,10 @@ function createSquares() {
                     newSquare.addEventListener("mouseover", blackenSquare);
                     break;
 
+                case "Colorize": 
+                    newSquare.addEventListener("mouseover", colorizeSquare);
+                    break;
+
             }
 
             squares.push(newSquare);
@@ -64,7 +68,7 @@ function createSquares() {
 }
 
     function blackenSquare(event) {
-        event.target.style.opacity="1";
+        event.target.style.opacity = "1";
         event.target.style.backgroundColor = "black";
     }
 
@@ -73,4 +77,17 @@ function createSquares() {
         let newOpacity = currentOpacity + 0.1;
         // console.log(`Opacity: ${currentOpacity} -> ${newOpacity}`);
         event.target.style.opacity = newOpacity.toString(); 
+    }
+
+    function colorizeSquare(event) {
+        event.target.style.opacity = "1";
+
+        let colors = {
+            r: Math.floor(Math.random()*256),
+            g: Math.floor(Math.random()*256),
+            b: Math.floor(Math.random()*256),
+        };
+
+        event.target.style.backgroundColor = `rgb(${colors.r}, ${colors.g}, ${colors.b})`;
+
     }
