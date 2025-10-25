@@ -2,14 +2,10 @@
 
 let drawingEnabled = true;
 let squaresCount = 16;
-let containerWidth = 960;
-let squareWidth = 60;
-const squares = [];
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    const resetBtn = document.querySelector("#reset-Btn");
-    
+    const resetBtn = document.querySelector("#reset-Btn");    
 
     console.log(resetBtn);
     console.log(container);
@@ -24,7 +20,6 @@ function createSquares() {
 
     if (container.hasChildNodes) {
         container.innerHTML = "";
-        squares.splice(0, squares.length);
     }
     
     const mode = document.querySelector("#mode");
@@ -65,14 +60,11 @@ function createSquares() {
 
             }
 
-            squares.push(newSquare);
             container.appendChild(newSquare);
 
         }        
 
     }
-    
-    console.log(squares);    
 
 }
 
@@ -87,7 +79,6 @@ function createSquares() {
         if (drawingEnabled) {
             let currentOpacity = parseFloat(event.target.style.opacity);
             let newOpacity = currentOpacity + 0.1;
-            // console.log(`Opacity: ${currentOpacity} -> ${newOpacity}`);
             event.target.style.opacity = newOpacity.toString(); 
         }
     }
@@ -97,9 +88,9 @@ function createSquares() {
             event.target.style.opacity = "1";
 
             let colors = {
-                r: Math.floor(Math.random()*256),
-                g: Math.floor(Math.random()*256),
-                b: Math.floor(Math.random()*256),
+                r: Math.floor(Math.random()*255),
+                g: Math.floor(Math.random()*255),
+                b: Math.floor(Math.random()*255),
             };
 
             event.target.style.backgroundColor = `rgb(${colors.r}, ${colors.g}, ${colors.b})`;
