@@ -37,17 +37,18 @@ button:hover {
 
 #container {
     background-color: darkgrey;
+    border: 5px solid black;
     border-radius: 5px;
     display: flex;
-    /* flex-direction: row; */
     flex-wrap: wrap;
     width: 960px;
     height: 960px;
+    margin-bottom: 50px;
 }
 
 #container div {
     background-color: black;
-    border: none;
+    border: 1px solid black;
     opacity: 0.1;
     /* width: 60px;
     height: 60px; */
