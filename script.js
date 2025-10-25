@@ -1,5 +1,6 @@
 "use strict";
 
+let drawingEnabled = true;
 let squaresCount = 16;
 let containerWidth = 960;
 let squareWidth = 60;
@@ -28,6 +29,14 @@ function createSquares() {
     
     const mode = document.querySelector("#mode");
     console.log(mode.value);
+
+    const paint_mode = document.querySelector("#paint_mode");
+    console.log(paint_mode.value);
+    if (paint_mode.value === "Drag") {
+        drawingEnabled = false;
+        document.addEventListener("mousedown", () => drawingEnabled = true);
+        document.addEventListener("mouseup", () => drawingEnabled = false);
+    }
 
     squaresCount = prompt("Please enter the wanted number of squares per row.", "24");
     
@@ -68,26 +77,31 @@ function createSquares() {
 }
 
     function blackenSquare(event) {
-        event.target.style.opacity = "1";
-        event.target.style.backgroundColor = "black";
+        if (drawingEnabled) {
+            event.target.style.opacity = "1";
+            event.target.style.backgroundColor = "black";
+        }
     }
 
     function darkenSquare(event) {
-        let currentOpacity = parseFloat(event.target.style.opacity);
-        let newOpacity = currentOpacity + 0.1;
-        // console.log(`Opacity: ${currentOpacity} -> ${newOpacity}`);
-        event.target.style.opacity = newOpacity.toString(); 
+        if (drawingEnabled) {
+            let currentOpacity = parseFloat(event.target.style.opacity);
+            let newOpacity = currentOpacity + 0.1;
+            // console.log(`Opacity: ${currentOpacity} -> ${newOpacity}`);
+            event.target.style.opacity = newOpacity.toString(); 
+        }
     }
 
     function colorizeSquare(event) {
-        event.target.style.opacity = "1";
+        if (drawingEnabled) {
+            event.target.style.opacity = "1";
 
-        let colors = {
-            r: Math.floor(Math.random()*256),
-            g: Math.floor(Math.random()*256),
-            b: Math.floor(Math.random()*256),
-        };
+            let colors = {
+                r: Math.floor(Math.random()*256),
+                g: Math.floor(Math.random()*256),
+                b: Math.floor(Math.random()*256),
+            };
 
-        event.target.style.backgroundColor = `rgb(${colors.r}, ${colors.g}, ${colors.b})`;
-
+            event.target.style.backgroundColor = `rgb(${colors.r}, ${colors.g}, ${colors.b})`;
+        }
     }
